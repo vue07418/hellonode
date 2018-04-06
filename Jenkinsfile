@@ -1,7 +1,11 @@
-node {
-    def app
+pipeline {
+    agent { dockerfile true }
+	
+    node {
+       def app
+    stages {
 
-    stage('Clone repository') {
+       stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
@@ -33,4 +37,7 @@ node {
             app.push("latest")
         }
     }
+}
+}
+}
 }
